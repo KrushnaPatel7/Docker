@@ -1,10 +1,12 @@
 FROM python:3.8-slim-buster
- 
-WORKDIR /python-docker
- 
-COPY Python1.py Python1.py
-RUN pip3 install -r Python1.py
 
-COPY . .
- 
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+WORKDIR /app
+
+COPY app.py .
+
+RUN pip install flask
+
+EXPOSE 5000
+
+
+CMD ["python", "app.py"]  
